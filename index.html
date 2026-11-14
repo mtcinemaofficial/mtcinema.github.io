@@ -1,178 +1,650 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MT Cinema | Official Links</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-        body {
-            background-color: #0b0f19;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container {
-            width: 100%;
-            max-width: 480px;
-            background: #131824;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .banner-container {
-            width: 100%;
-            height: 180px;
-            overflow: hidden;
-            position: relative;
-        }
-        .banner-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.85);
-        }
-        .profile-section {
-            text-align: center;
-            margin-top: -50px;
-            position: relative;
-            padding: 0 20px;
-        }
-        .logo-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 4px solid #131824;
-            object-fit: cover;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            background: #1f293d;
-        }
-        .channel-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-top: 10px;
-            letter-spacing: 0.5px;
-        }
-        .channel-desc {
-            font-size: 13px;
-            color: #9ca3af;
-            margin-top: 5px;
-            padding: 0 10px;
-        }
-        .cta-container {
-            padding: 25px 20px;
-            text-align: center;
-        }
-        .youtube-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 16px 24px;
-            font-size: 18px;
-            font-weight: 700;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.4);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-        }
-        .youtube-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.6);
-            background: linear-gradient(135deg, #ff1a1a, #e60000);
-        }
-        .youtube-btn svg {
-            width: 28px;
-            height: 28px;
-            fill: #ffffff;
-        }
-        .gallery-section {
-            padding: 0 20px 25px 20px;
-        }
-        .section-heading {
-            font-size: 15px;
-            font-weight: 600;
-            color: #d1d5db;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-left: 3px solid #ff0000;
-            padding-left: 8px;
-        }
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-        .photo-grid img {
-            width: 100%;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 2, 0.1);
-        }
-        .footer {
-            text-align: center;
-            font-size: 11px;
-            color: #6b7280;
-            padding: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MT Cinema — Official Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-body: #080a0f;
+      --bg-card: #11141d;
+      --bg-elevated: #171b26;
+      --bg-director: #1a1e2b;
+      --border-subtle: rgba(255, 255, 255, 0.07);
+      --border-hover: rgba(255, 255, 255, 0.16);
+      --border-gold: rgba(212, 175, 55, 0.32);
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --accent-crimson: #dc2626;
+      --accent-gold: #d4af37;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-primary);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 16px 12px 44px;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 460px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+    }
+
+    /* 1. Banner & Brand Logo */
+    .hero-banner {
+      position: relative;
+      width: 100%;
+      height: 160px;
+      background: linear-gradient(135deg, #1b2030 0%, #0c0f16 100%);
+      overflow: hidden;
+    }
+
+    .hero-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 35%, var(--bg-card) 100%);
+    }
+
+    .brand-header {
+      position: relative;
+      margin-top: -46px;
+      padding: 0 24px 20px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .brand-logo {
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--bg-card);
+      background-color: var(--bg-elevated);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      margin-bottom: 10px;
+    }
+
+    .brand-title {
+      font-size: 1.48rem;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      color: #ffffff;
+    }
+
+    .brand-tagline {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+      max-width: 320px;
+      margin-inline: auto;
+    }
+
+    /* Section Base */
+    .section {
+      padding: 18px 20px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 0.76rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 3px;
+      height: 13px;
+      background-color: var(--accent-crimson);
+      border-radius: 2px;
+    }
+
+    .scroll-hint {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* 2. Latest Update / Status Ticker */
+    .status-box {
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--accent-gold);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-gold);
+      margin-top: 6px;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+    }
+
+    .status-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-gold);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .status-text {
+      font-size: 0.83rem;
+      color: var(--text-primary);
+      line-height: 1.45;
+    }
+
+    /* 3. Direct Social Links */
+    .social-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 15px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.2s ease;
+    }
+
+    .btn-link:hover {
+      border-color: var(--border-hover);
+      background-color: #1d2230;
+      transform: translateY(-1px);
+    }
+
+    .btn-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .yt-accent .btn-icon { background: rgba(220, 38, 38, 0.14); color: #ef4444; }
+    .yt-accent { border-left: 3px solid #dc2626; }
+
+    .fb-accent .btn-icon { background: rgba(59, 130, 246, 0.14); color: #60a5fa; }
+    .fb-accent { border-left: 3px solid #3b82f6; }
+
+    .wa-accent .btn-icon { background: rgba(34, 197, 94, 0.14); color: #4ade80; }
+    .wa-accent { border-left: 3px solid #22c55e; }
+
+    .btn-arrow {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    /* 4. Director Card (Subtle Highlight) & Team Row Cards */
+    .director-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: linear-gradient(145deg, #1a1f2e 0%, #141824 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: 14px;
+      padding: 14px 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .director-photo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-gold);
+      background-color: #232838;
+      flex-shrink: 0;
+    }
+
+    .person-details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .director-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-gold);
+      background: rgba(212, 175, 55, 0.12);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+
+    .director-name {
+      font-size: 1.04rem;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.2px;
+    }
+
+    .profile-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+      padding: 4px 11px;
+      border-radius: 6px;
+      font-size: 0.76rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--text-primary);
+      background-color: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: all 0.2s ease;
+    }
+
+    .profile-pill:hover {
+      background-color: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+    }
+
+    .profile-pill i {
+      font-size: 0.82rem;
+      color: #e1306c;
+    }
+
+    /* Team Members Vertical Stack (Photo Left, Name + Profile Link Right) */
+    .team-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .member-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 11px 14px;
+      transition: border-color 0.2s ease;
+    }
+
+    .member-row:hover {
+      border-color: var(--border-hover);
+    }
+
+    .member-photo {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--border-hover);
+      background-color: #232838;
+      flex-shrink: 0;
+    }
+
+    .member-name {
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .member-role {
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      margin-left: 6px;
+      font-weight: 400;
+    }
+
+    /* 5. Movies & Upcoming Posters (Horizontal Scroll) */
+    .h-scroll {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .h-scroll::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .h-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.14);
+      border-radius: 10px;
+    }
+
+    .movie-card {
+      flex: 0 0 152px;
+      scroll-snap-align: start;
+      text-decoration: none;
+      color: inherit;
+      background-color: var(--bg-elevated);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .movie-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-hover);
+    }
+
+    .poster-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      background-color: #1f2433;
+    }
+
+    .poster-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .status-tag {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      background: rgba(11, 14, 20, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #f3f4f6;
+    }
+
+    .status-tag.upcoming {
+      border-color: rgba(212, 175, 55, 0.5);
+      color: var(--accent-gold);
+    }
+
+    .play-badge {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(15, 18, 25, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 0.72rem;
+    }
+
+    .movie-meta {
+      padding: 10px;
+    }
+
+    .movie-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #f9fafb;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .movie-genre {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* 6. Behind The Scenes Gallery */
+    .bts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .bts-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .bts-item.wide {
+      grid-column: span 2;
+      aspect-ratio: 21 / 9;
+    }
+
+    .bts-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .bts-caption {
+      position: absolute;
+      bottom: 0;
+      inset-inline: 0;
+      padding: 14px 10px 6px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+      font-size: 0.72rem;
+      color: #e5e7eb;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 18px 20px;
+      text-align: center;
+      border-top: 1px solid var(--border-subtle);
+      background-color: rgba(0, 0, 0, 0.22);
+    }
+
+    .footer p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="banner-container">
-            <img src="banner.jpg" alt="MT Cinema Banner">
-        </div>
-
-        <div class="profile-section">
-            <img src="logo.jpg" alt="MT Cinema Logo" class="logo-img">
-            <h1 class="channel-title">MT CINEMA</h1>
-            <p class="channel-desc">Independent Short Films, Suspense Thrillers & Clean Entertainment.</p>
-        </div>
-
-        <div class="cta-container">
-            <!-- Direct YouTube App Deep Link Intent -->
-            <a href="intent://www.youtube.com/@mtcinema_official#{package;S.com.google.android.youtube;end;}" class="youtube-btn">
-                <svg viewBox="0 0 24 24">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-                Watch on YouTube
-            </a>
-        </div>
-
-        <div class="gallery-section">
-            <div class="section-heading">Behind The Scenes & Team</div>
-            <div class="photo-grid">
-                <img src="shot1.jpg" alt="Scene 1">
-                <img src="shot2.jpg" alt="Team">
-                <img src="shot3.jpg" alt="Shoot">
-            </div>
-        </div>
-
-        <div class="footer">
-            &copy; 2026 MT Cinema. All Rights Reserved.
-        </div>
+  <main class="container">
+    
+    <!-- BANNER & CHANNEL LOGO -->
+    <div class="hero-banner">
+      <img src="banner.jpg" alt="MT Cinema Banner" onerror="this.style.display='none'">
     </div>
 
-</body>
-</html>
+    <header class="brand-header">
+      <img src="logo.jpg" alt="MT Cinema Logo" class="brand-logo" onerror="this.src='https://placehold.co/150x150/171b26/ffffff?text=MT'">
+      <h1 class="brand-title">MT CINEMA</h1>
+      <p class="brand-tagline">Independent Short Films, Suspense Thrillers &amp; Clean Family Entertainment.</p>
+    </header>
+
+    <!-- NEW UPDATES / STATUS SECTION -->
+    <section class="section">
+      <div class="status-box">
+        <span class="status-dot"></span>
+        <div>
+          <div class="status-label">Latest Production Status</div>
+          <!-- यहाँ आप जब चाहें अपना नया स्टेटस अपडेट लिख सकते हैं -->
+          <p class="status-text">Post-production &amp; final editing underway for our upcoming psychological thriller <strong>AKELA</strong>. Stay tuned!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIRECT LINKS (YOUTUBE, FACEBOOK, WHATSAPP) -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-title">Official Channels &amp; Contact</span>
+      </div>
+
+      <div class="social-stack">
+        <!-- YouTube Direct Link -->
+        <a href="https://www.youtube.com/@mtcinema_official" target="_blank" rel="noopener noreferrer" class="btn-link yt-accent">
+          <div class="btn-left">
+            <span class="btn-icon"><i class="fa-brands fa-youtube"></i></span>
+            <span>Watch on YouTube</span>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
+        </a>
+
+        <!-- Facebook Direct Link -->
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="btn-link fb-accent">
+          <div class="btn-left">
+            <span class="btn-icon"><i class="fa-brands fa-facebook-f"></i></span>
+            <span>Follow on Facebook</span>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
+        </a>
+
+        <!-- WhatsApp Direct Link -->
+        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" class="btn-link wa-accent">
+          <div class="btn-left">
+            <span class="btn-icon"><i class="fa-brands fa-whatsapp"></i></span>
+            <span>Connect on WhatsApp</span>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- DIRECTOR PROFILE (SUBTLE HIGHLIGHT) -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-title">Channel Director</span>
+      </div>
+
+      <div class="director-card">
+        <img src="moheed.jpg" alt="Mohd Moheed" class="director-photo" onerror="this.src='https://placehold.co/130x130/232838/d4af37?text=MM'">
+        <div class="person-details">
+          <span class="director-badge">Director &amp; Creator</span>
+          <div class="director-name">Mohd Moheed</div>
+          <!-- यहाँ अपना Instagram लिंक डालें -->
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="profile-pill">
+            <i class="fa-brands fa-instagram"></i>
+            <span>Profile</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM MEMBERS (PHOTO LEFT, NAME + INSTAGRAM PROFILE RIGHT) -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-title">Team &amp; Cast</span>
+      </div>
+
+      <div class="team-list">
+        <!-- 1. Mohd Arif -->
+        <div class="member-row">
+          <img src="team-arif.jpg" alt="Mohd Arif" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=MA'">
+          <div class="person-details">
+            <div class="member-name">Mohd Arif <span class="member-role">• Cinematography</span></div>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="profile-pill">
+              <i class="fa-brands fa-instagram"></i>
+              <span>Profile</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Junaid Ansari -->
+        <div class="member-row">
+          <img src="team-junaid.jpg" alt="Junaid Ansari" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=JA'">
+          <div class="person-details">
+            <div class="member-name">Junaid Ansari <span class="member-role">• Lead Actor</span></div>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="profile-pill">
+              <i class="fa-brands fa-instagram"></i>
+              <span>Profile</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Tiger -->
+        <div class="member-row">
+          <img src="team-tiger.jpg" alt="Tiger" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=TG'">
+          <div class="person-details">
+            <div class="member-name">Tiger <span class="member-role">• Cast</span></div>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="profile-pill">
+              <i class="fa-brands fa-instagram"></i>
+              <span>Profile</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Mohd Taslim -->
+        <div class="member-row">
+          <img src="team-taslim.jpg" alt="Mohd Taslim" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=MT'">
+          <div class="person-details">
+            <div class="member-name">Mohd Taslim <span class="member-role">• Actor</span></div>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer
