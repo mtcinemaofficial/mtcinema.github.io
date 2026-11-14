@@ -14,7 +14,6 @@
       --bg-body: #080a0f;
       --bg-card: #11141d;
       --bg-elevated: #171b26;
-      --bg-director: #1a1e2b;
       --border-subtle: rgba(255, 255, 255, 0.07);
       --border-hover: rgba(255, 255, 255, 0.16);
       --border-gold: rgba(212, 175, 55, 0.32);
@@ -184,11 +183,11 @@
       line-height: 1.45;
     }
 
-    /* 3. Direct Social Links */
+    /* 3. Direct Social Links with Animated YouTube Highlight */
     .social-stack {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .btn-link {
@@ -228,21 +227,40 @@
       font-size: 1rem;
     }
 
-    .yt-accent .btn-icon { background: rgba(220, 38, 38, 0.14); color: #ef4444; }
-    .yt-accent { border-left: 3px solid #dc2626; }
+    /* Highly Highlighted & Animated YouTube Button */
+    .yt-highlight {
+      background: linear-gradient(135deg, #1c1315 0%, #221215 100%);
+      border: 1.5px solid rgba(220, 38, 38, 0.6);
+      box-shadow: 0 0 16px rgba(220, 38, 38, 0.22);
+      animation: ytPulse 2.2s infinite ease-in-out;
+    }
+
+    .yt-highlight .btn-icon { 
+      background: rgba(220, 38, 38, 0.22); 
+      color: #ef4444; 
+    }
+
+    @keyframes ytPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.35);
+      }
+      70% {
+        box-shadow: 0 0 0 8px rgba(220, 38, 38, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+      }
+    }
 
     .fb-accent .btn-icon { background: rgba(59, 130, 246, 0.14); color: #60a5fa; }
-    .fb-accent { border-left: 3px solid #3b82f6; }
-
     .wa-accent .btn-icon { background: rgba(34, 197, 94, 0.14); color: #4ade80; }
-    .wa-accent { border-left: 3px solid #22c55e; }
 
     .btn-arrow {
       font-size: 0.76rem;
       color: var(--text-muted);
     }
 
-    /* 4. Director Card (Subtle Highlight) & Team Row Cards */
+    /* 4. Director Card & Team Row Cards */
     .director-card {
       display: flex;
       align-items: center;
@@ -316,7 +334,7 @@
       color: #e1306c;
     }
 
-    /* Team Members Vertical Stack (Photo Left, Name + Profile Link Right) */
+    /* Team Members List */
     .team-list {
       display: flex;
       flex-direction: column;
@@ -361,7 +379,7 @@
       font-weight: 400;
     }
 
-    /* 5. Movies & Upcoming Posters (Horizontal Scroll) */
+    /* 5. Movies & Upcoming Posters */
     .h-scroll {
       display: flex;
       gap: 12px;
@@ -537,24 +555,23 @@
         <span class="status-dot"></span>
         <div>
           <div class="status-label">Latest Production Status</div>
-          <!-- यहाँ आप जब चाहें अपना नया स्टेटस अपडेट लिख सकते हैं -->
           <p class="status-text">Post-production &amp; final editing underway for our upcoming psychological thriller <strong>AKELA</strong>. Stay tuned!</p>
         </div>
       </div>
     </section>
 
-    <!-- DIRECT LINKS (YOUTUBE, FACEBOOK, WHATSAPP) -->
+    <!-- DIRECT LINKS (ANIMATED & HIGHLIGHTED YOUTUBE, FACEBOOK, WHATSAPP) -->
     <section class="section">
       <div class="section-header">
         <span class="section-title">Official Channels &amp; Contact</span>
       </div>
 
       <div class="social-stack">
-        <!-- YouTube Direct Link -->
-        <a href="https://www.youtube.com/@mtcinema_official" target="_blank" rel="noopener noreferrer" class="btn-link yt-accent">
+        <!-- Highly Highlighted & Animated YouTube Direct Link -->
+        <a href="https://www.youtube.com/@mtcinema_official" target="_blank" rel="noopener noreferrer" class="btn-link yt-highlight">
           <div class="btn-left">
             <span class="btn-icon"><i class="fa-brands fa-youtube"></i></span>
-            <span>Watch on YouTube</span>
+            <span><strong>Watch on YouTube</strong></span>
           </div>
           <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
         </a>
@@ -579,7 +596,7 @@
       </div>
     </section>
 
-    <!-- DIRECTOR PROFILE (SUBTLE HIGHLIGHT) -->
+    <!-- DIRECTOR PROFILE -->
     <section class="section">
       <div class="section-header">
         <span class="section-title">Channel Director</span>
@@ -590,7 +607,6 @@
         <div class="person-details">
           <span class="director-badge">Director &amp; Creator</span>
           <div class="director-name">Mohd Moheed</div>
-          <!-- यहाँ अपना Instagram लिंक डालें -->
           <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="profile-pill">
             <i class="fa-brands fa-instagram"></i>
             <span>Profile</span>
@@ -599,7 +615,7 @@
       </div>
     </section>
 
-    <!-- TEAM MEMBERS (PHOTO LEFT, NAME + INSTAGRAM PROFILE RIGHT) -->
+    <!-- TEAM MEMBERS & CAST (INCLUDING SONU & ISMAIL) -->
     <section class="section">
       <div class="section-header">
         <span class="section-title">Team &amp; Cast</span>
@@ -616,35 +632,3 @@
               <span>Profile</span>
             </a>
           </div>
-        </div>
-
-        <!-- 2. Junaid Ansari -->
-        <div class="member-row">
-          <img src="team-junaid.jpg" alt="Junaid Ansari" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=JA'">
-          <div class="person-details">
-            <div class="member-name">Junaid Ansari <span class="member-role">• Lead Actor</span></div>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="profile-pill">
-              <i class="fa-brands fa-instagram"></i>
-              <span>Profile</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- 3. Tiger -->
-        <div class="member-row">
-          <img src="team-tiger.jpg" alt="Tiger" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=TG'">
-          <div class="person-details">
-            <div class="member-name">Tiger <span class="member-role">• Cast</span></div>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="profile-pill">
-              <i class="fa-brands fa-instagram"></i>
-              <span>Profile</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- 4. Mohd Taslim -->
-        <div class="member-row">
-          <img src="team-taslim.jpg" alt="Mohd Taslim" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=MT'">
-          <div class="person-details">
-            <div class="member-name">Mohd Taslim <span class="member-role">• Actor</span></div>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer
