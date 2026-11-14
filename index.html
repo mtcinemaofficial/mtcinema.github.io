@@ -577,6 +577,31 @@
       color: var(--text-muted);
     }
   </style>
+
+  <!-- JavaScript to force YouTube app / external browser open from in-app browsers -->
+  <script>
+    function openYouTubeApp(event, url) {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      
+      // Check if Android
+      if (/android/i.test(userAgent)) {
+        event.preventDefault();
+        window.location.href = 'intent://www.youtube.com/@mtcinema_official#Intent;package=com.google.android.youtube;scheme=https;end;';
+        // Fallback to normal URL if intent fails
+        setTimeout(function() {
+          window.open(url, '_system');
+        }, 500);
+      } 
+      // Check if iOS
+      else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        event.preventDefault();
+        window.location.href = 'vnd.youtube://www.youtube.com/@mtcinema_official';
+        setTimeout(function() {
+          window.open(url, '_blank');
+        }, 500);
+      }
+    }
+  </script>
 </head>
 <body>
 
@@ -584,7 +609,6 @@
     
     <!-- ======================================================================
          SECTION 1: CHANNEL BANNER & LOGO
-         यहाँ बैनर और चैनल लोगो की फोटो का नाम बदल सकते हैं (banner.jpg, logo.jpg)
          ====================================================================== -->
     <div class="hero-banner">
       <img src="banner.jpg" alt="MT Cinema Banner" onerror="this.style.display='none'">
@@ -599,7 +623,6 @@
 
     <!-- ======================================================================
          SECTION 2: LATEST PRODUCTION STATUS / NEW UPDATES
-         जब भी कोई नया अपडेट लिखना हो, नीचे <p class="status-text"> के अंदर बदलें
          ====================================================================== -->
     <section class="section">
       <div class="status-box">
@@ -614,7 +637,6 @@
 
     <!-- ======================================================================
          SECTION 3: OFFICIAL SOCIAL LINKS (YOUTUBE, FACEBOOK, WHATSAPP)
-         अपने डायरेक्ट लिंक्स नीचे href="..." के अंदर डालें
          ====================================================================== -->
     <section class="section">
       <div class="section-header">
@@ -622,8 +644,8 @@
       </div>
 
       <div class="social-stack">
-        <!-- YouTube Button (Red + White Glowing Capital Text + Animation) -->
-        <a href="https://www.youtube.com/@mtcinema_official" target="_blank" rel="noopener noreferrer" class="btn-link btn-youtube">
+        <!-- YouTube Button (Updated with direct app opening script) -->
+        <a href="https://www.youtube.com/@mtcinema_official" target="_blank" rel="noopener noreferrer" onclick="openYouTubeApp(event, this.href)" class="btn-link btn-youtube">
           <div class="btn-left">
             <span class="btn-icon"><i class="fa-brands fa-youtube"></i></span>
             <span class="yt-glow-text">WATCH ON YOUTUBE</span>
@@ -640,7 +662,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
         </a>
 
-        <!-- WhatsApp Button (91 के बाद अपना 10 अंकों का नंबर लिखें) -->
+        <!-- WhatsApp Button -->
         <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" class="btn-link wa-accent">
           <div class="btn-left">
             <span class="btn-icon"><i class="fa-brands fa-whatsapp"></i></span>
@@ -654,7 +676,6 @@
 
     <!-- ======================================================================
          SECTION 4: CHANNEL DIRECTOR (MOHD MOHEED)
-         अपनी फोटो (moheed.jpg) और अपना Instagram लिंक यहाँ सेट करें
          ====================================================================== -->
     <section class="section">
       <div class="section-header">
@@ -676,8 +697,7 @@
 
 
     <!-- ======================================================================
-         SECTION 5: TEAM MEMBERS & CAST
-         हर मेंबर की फोटो और उनके पर्सनल Instagram लिंक यहाँ अपडेट करें
+         SECTION 5: TEAM MEMBERS & CAST (Bulbul removed)
          ====================================================================== -->
     <section class="section">
       <div class="section-header">
@@ -758,25 +778,12 @@
           </div>
         </div>
 
-        <!-- Member 7: Bulbul Ansari -->
-        <div class="member-row">
-          <img src="team-bulbul.jpg" alt="Bulbul Ansari" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=BA'">
-          <div class="person-details">
-            <div class="member-name">Bulbul Ansari <span class="member-role">• Actor</span></div>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="profile-pill">
-              <i class="fa-brands fa-instagram"></i>
-              <span>Profile</span>
-            </a>
-          </div>
-        </div>
-
       </div>
     </section>
 
 
     <!-- ======================================================================
          SECTION 6: MOVIES & UPCOMING POSTERS
-         हर पोस्टर का लिंक (href="...") और पोस्टर इमेज (src="...") यहाँ बदलें
          ====================================================================== -->
     <section class="section">
       <div class="section-header">
@@ -831,7 +838,6 @@
 
     <!-- ======================================================================
          SECTION 7: BEHIND THE SCENES GALLERY
-         शूटिंग की फोटोज़ (bts-main.jpg, bts-1.jpg, bts-2.jpg) यहाँ सेट करें
          ====================================================================== -->
     <section class="section">
       <div class="section-header">
