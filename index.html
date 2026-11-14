@@ -95,6 +95,7 @@
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
         }
         .youtube-btn:hover {
             transform: translateY(-3px);
@@ -131,10 +132,6 @@
             object-fit: cover;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease;
-        }
-        .photo-grid img:hover {
-            transform: scale(1.05);
         }
         /* Footer */
         .footer {
@@ -151,22 +148,19 @@
     <div class="container">
         <!-- Banner Image -->
         <div class="banner-container">
-            <!-- Yahan apni banner image ka link ya file name dalein -->
             <img src="banner.jpg" alt="MT Cinema Banner">
         </div>
 
         <!-- Profile & Logo Section -->
         <div class="profile-section">
-            <!-- Yahan apne channel logo ka link dalein -->
             <img src="logo.jpg" alt="MT Cinema Logo" class="logo-img">
             <h1 class="channel-title">MT CINEMA</h1>
             <p class="channel-desc">Independent Short Films, Suspense Thrillers & Clean Entertainment.</p>
         </div>
 
-        <!-- High-Impact CTA Button -->
+        <!-- High-Impact CTA Button with App Intent Script -->
         <div class="cta-container">
-            <!-- Yahan apna YouTube Channel / Video link dalein -->
-            <a href="https://www.youtube.com/@mtcinema_official" class="youtube-btn" target="_blank">
+            <a href="#" onclick="openYouTubeApp(event)" class="youtube-btn">
                 <svg viewBox="0 0 24 24">
                     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
@@ -178,7 +172,6 @@
         <div class="gallery-section">
             <div class="section-heading">Behind The Scenes & Team</div>
             <div class="photo-grid">
-                <!-- Yahan apni team ya shoot ki photos ke link dalein -->
                 <img src="shot1.jpg" alt="Scene 1">
                 <img src="shot2.jpg" alt="Team">
                 <img src="shot3.jpg" alt="Shoot">
@@ -190,6 +183,24 @@
             &copy; 2026 MT Cinema. All Rights Reserved.
         </div>
     </div>
+
+    <!-- JavaScript to Force Open YouTube App -->
+    <script>
+        function openYouTubeApp(e) {
+            e.preventDefault();
+            // YouTube app scheme to trigger native app directly
+            var appUrl = "vnd.youtube://www.youtube.com/@mtcinema_official";
+            var webUrl = "https://www.youtube.com/@mtcinema_official";
+            
+            // Try opening YouTube app
+            window.location.href = appUrl;
+            
+            // Fallback to web link if app is not installed
+            setTimeout(function() {
+                window.location.href = webUrl;
+            }, 600);
+        }
+    </script>
 
 </body>
 </html>
