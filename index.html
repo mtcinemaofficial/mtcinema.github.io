@@ -4,12 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MT Cinema — Official Hub</title>
+  
+  <!-- Google Fonts & FontAwesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
+    /* ==========================================================================
+       1. THEME COLORS & VARIABLES (यहाँ से पूरी वेबसाइट के कलर कंट्रोल होते हैं)
+       ========================================================================== */
     :root {
       --bg-body: #080a0f;
       --bg-card: #11141d;
@@ -24,6 +29,9 @@
       --accent-gold: #d4af37;
     }
 
+    /* ==========================================================================
+       2. BASIC PAGE SETUP & MAIN CONTAINER
+       ========================================================================== */
     * {
       margin: 0;
       padding: 0;
@@ -51,7 +59,9 @@
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
     }
 
-    /* 1. Banner & Brand Logo */
+    /* ==========================================================================
+       3. TOP BANNER & CHANNEL LOGO
+       ========================================================================== */
     .hero-banner {
       position: relative;
       width: 100%;
@@ -108,7 +118,9 @@
       margin-inline: auto;
     }
 
-    /* Section Base */
+    /* ==========================================================================
+       4. COMMON SECTION HEADERS
+       ========================================================================== */
     .section {
       padding: 18px 20px;
       border-top: 1px solid var(--border-subtle);
@@ -146,7 +158,9 @@
       color: var(--text-muted);
     }
 
-    /* 2. Latest Update / Status Ticker */
+    /* ==========================================================================
+       5. LATEST STATUS / UPDATE BOX
+       ========================================================================== */
     .status-box {
       background-color: var(--bg-elevated);
       border: 1px solid var(--border-subtle);
@@ -183,7 +197,9 @@
       line-height: 1.45;
     }
 
-    /* 3. Direct Social Links with Animated YouTube Highlight */
+    /* ==========================================================================
+       6. SOCIAL BUTTONS (RED GLOWING YOUTUBE + FACEBOOK + WHATSAPP)
+       ========================================================================== */
     .social-stack {
       display: flex;
       flex-direction: column;
@@ -194,7 +210,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 15px;
+      padding: 13px 16px;
       border-radius: 12px;
       text-decoration: none;
       font-size: 0.9rem;
@@ -227,31 +243,51 @@
       font-size: 1rem;
     }
 
-    /* Highly Highlighted & Animated YouTube Button */
-    .yt-highlight {
-      background: linear-gradient(135deg, #1c1315 0%, #221215 100%);
-      border: 1.5px solid rgba(220, 38, 38, 0.6);
-      box-shadow: 0 0 16px rgba(220, 38, 38, 0.22);
-      animation: ytPulse 2.2s infinite ease-in-out;
+    /* --- Special Red Glowing & Animated YouTube Button --- */
+    .btn-youtube {
+      background: linear-gradient(135deg, #e11d1d 0%, #b91c1c 100%);
+      border: 1px solid #ff4d4d;
+      color: #ffffff;
+      box-shadow: 0 4px 18px rgba(220, 38, 38, 0.45);
+      animation: ytRedPulse 2s infinite ease-in-out;
     }
 
-    .yt-highlight .btn-icon { 
-      background: rgba(220, 38, 38, 0.22); 
-      color: #ef4444; 
+    .btn-youtube:hover {
+      background: linear-gradient(135deg, #ef2323 0%, #dc2626 100%);
+      transform: translateY(-2px);
     }
 
-    @keyframes ytPulse {
+    .btn-youtube .btn-icon {
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      font-size: 1.1rem;
+    }
+
+    .yt-glow-text {
+      color: #ffffff;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.75);
+    }
+
+    .btn-youtube .btn-arrow {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    @keyframes ytRedPulse {
       0% {
-        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.35);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.65);
       }
       70% {
-        box-shadow: 0 0 0 8px rgba(220, 38, 38, 0);
+        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
       }
       100% {
-        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
       }
     }
 
+    /* --- Standard Facebook & WhatsApp Accents --- */
     .fb-accent .btn-icon { background: rgba(59, 130, 246, 0.14); color: #60a5fa; }
     .wa-accent .btn-icon { background: rgba(34, 197, 94, 0.14); color: #4ade80; }
 
@@ -260,7 +296,9 @@
       color: var(--text-muted);
     }
 
-    /* 4. Director Card & Team Row Cards */
+    /* ==========================================================================
+       7. DIRECTOR & TEAM MEMBER CARDS
+       ========================================================================== */
     .director-card {
       display: flex;
       align-items: center;
@@ -379,7 +417,9 @@
       font-weight: 400;
     }
 
-    /* 5. Movies & Upcoming Posters */
+    /* ==========================================================================
+       8. MOVIES & UPCOMING POSTERS (HORIZONTAL SCROLL)
+       ========================================================================== */
     .h-scroll {
       display: flex;
       gap: 12px;
@@ -483,7 +523,9 @@
       margin-top: 2px;
     }
 
-    /* 6. Behind The Scenes Gallery */
+    /* ==========================================================================
+       9. BEHIND THE SCENES PHOTO GALLERY
+       ========================================================================== */
     .bts-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -520,7 +562,9 @@
       color: #e5e7eb;
     }
 
-    /* Footer */
+    /* ==========================================================================
+       10. FOOTER
+       ========================================================================== */
     .footer {
       padding: 18px 20px;
       text-align: center;
@@ -538,7 +582,10 @@
 
   <main class="container">
     
-    <!-- BANNER & CHANNEL LOGO -->
+    <!-- ======================================================================
+         SECTION 1: CHANNEL BANNER & LOGO
+         यहाँ बैनर और चैनल लोगो की फोटो का नाम बदल सकते हैं (banner.jpg, logo.jpg)
+         ====================================================================== -->
     <div class="hero-banner">
       <img src="banner.jpg" alt="MT Cinema Banner" onerror="this.style.display='none'">
     </div>
@@ -549,7 +596,11 @@
       <p class="brand-tagline">Independent Short Films, Suspense Thrillers &amp; Clean Family Entertainment.</p>
     </header>
 
-    <!-- NEW UPDATES / STATUS SECTION -->
+
+    <!-- ======================================================================
+         SECTION 2: LATEST PRODUCTION STATUS / NEW UPDATES
+         जब भी कोई नया अपडेट लिखना हो, नीचे <p class="status-text"> के अंदर बदलें
+         ====================================================================== -->
     <section class="section">
       <div class="status-box">
         <span class="status-dot"></span>
@@ -560,23 +611,27 @@
       </div>
     </section>
 
-    <!-- DIRECT LINKS (ANIMATED & HIGHLIGHTED YOUTUBE, FACEBOOK, WHATSAPP) -->
+
+    <!-- ======================================================================
+         SECTION 3: OFFICIAL SOCIAL LINKS (YOUTUBE, FACEBOOK, WHATSAPP)
+         अपने डायरेक्ट लिंक्स नीचे href="..." के अंदर डालें
+         ====================================================================== -->
     <section class="section">
       <div class="section-header">
         <span class="section-title">Official Channels &amp; Contact</span>
       </div>
 
       <div class="social-stack">
-        <!-- Highly Highlighted & Animated YouTube Direct Link -->
-        <a href="https://www.youtube.com/@mtcinema_official" target="_blank" rel="noopener noreferrer" class="btn-link yt-highlight">
+        <!-- YouTube Button (Red + White Glowing Capital Text + Animation) -->
+        <a href="https://www.youtube.com/@mtcinema_official" target="_blank" rel="noopener noreferrer" class="btn-link btn-youtube">
           <div class="btn-left">
             <span class="btn-icon"><i class="fa-brands fa-youtube"></i></span>
-            <span><strong>Watch on YouTube</strong></span>
+            <span class="yt-glow-text">WATCH ON YOUTUBE</span>
           </div>
           <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
         </a>
 
-        <!-- Facebook Direct Link -->
+        <!-- Facebook Button -->
         <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="btn-link fb-accent">
           <div class="btn-left">
             <span class="btn-icon"><i class="fa-brands fa-facebook-f"></i></span>
@@ -585,7 +640,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
         </a>
 
-        <!-- WhatsApp Direct Link -->
+        <!-- WhatsApp Button (91 के बाद अपना 10 अंकों का नंबर लिखें) -->
         <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" class="btn-link wa-accent">
           <div class="btn-left">
             <span class="btn-icon"><i class="fa-brands fa-whatsapp"></i></span>
@@ -596,7 +651,11 @@
       </div>
     </section>
 
-    <!-- DIRECTOR PROFILE -->
+
+    <!-- ======================================================================
+         SECTION 4: CHANNEL DIRECTOR (MOHD MOHEED)
+         अपनी फोटो (moheed.jpg) और अपना Instagram लिंक यहाँ सेट करें
+         ====================================================================== -->
     <section class="section">
       <div class="section-header">
         <span class="section-title">Channel Director</span>
@@ -615,14 +674,19 @@
       </div>
     </section>
 
-    <!-- TEAM MEMBERS & CAST (INCLUDING SONU & ISMAIL) -->
+
+    <!-- ======================================================================
+         SECTION 5: TEAM MEMBERS & CAST
+         हर मेंबर की फोटो और उनके पर्सनल Instagram लिंक यहाँ अपडेट करें
+         ====================================================================== -->
     <section class="section">
       <div class="section-header">
         <span class="section-title">Team &amp; Cast</span>
       </div>
 
       <div class="team-list">
-        <!-- 1. Mohd Arif -->
+        
+        <!-- Member 1: Mohd Arif -->
         <div class="member-row">
           <img src="team-arif.jpg" alt="Mohd Arif" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=MA'">
           <div class="person-details">
@@ -632,3 +696,175 @@
               <span>Profile</span>
             </a>
           </div>
+        </div>
+
+        <!-- Member 2: Junaid Ansari -->
+        <div class="member-row">
+          <img src="team-junaid.jpg" alt="Junaid Ansari" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=JA'">
+          <div class="person-details">
+            <div class="member-name">Junaid Ansari <span class="member-role">• Lead Actor</span></div>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="profile-pill">
+              <i class="fa-brands fa-instagram"></i>
+              <span>Profile</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 3: Sonu -->
+        <div class="member-row">
+          <img src="team-sonu.jpg" alt="Sonu" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=SO'">
+          <div class="person-details">
+            <div class="member-name">Sonu <span class="member-role">• Actor</span></div>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="profile-pill">
+              <i class="fa-brands fa-instagram"></i>
+              <span>Profile</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 4: Mohd Ismail -->
+        <div class="member-row">
+          <img src="team-ismail.jpg" alt="Mohd Ismail" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=MI'">
+          <div class="person-details">
+            <div class="member-name">Mohd Ismail <span class="member-role">• Production</span></div>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="profile-pill">
+              <i class="fa-brands fa-instagram"></i>
+              <span>Profile</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 5: Tiger -->
+        <div class="member-row">
+          <img src="team-tiger.jpg" alt="Tiger" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=TG'">
+          <div class="person-details">
+            <div class="member-name">Tiger <span class="member-role">• Cast</span></div>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="profile-pill">
+              <i class="fa-brands fa-instagram"></i>
+              <span>Profile</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 6: Mohd Taslim -->
+        <div class="member-row">
+          <img src="team-taslim.jpg" alt="Mohd Taslim" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=MT'">
+          <div class="person-details">
+            <div class="member-name">Mohd Taslim <span class="member-role">• Actor</span></div>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="profile-pill">
+              <i class="fa-brands fa-instagram"></i>
+              <span>Profile</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 7: Bulbul Ansari -->
+        <div class="member-row">
+          <img src="team-bulbul.jpg" alt="Bulbul Ansari" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=BA'">
+          <div class="person-details">
+            <div class="member-name">Bulbul Ansari <span class="member-role">• Actor</span></div>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="profile-pill">
+              <i class="fa-brands fa-instagram"></i>
+              <span>Profile</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ======================================================================
+         SECTION 6: MOVIES & UPCOMING POSTERS
+         हर पोस्टर का लिंक (href="...") और पोस्टर इमेज (src="...") यहाँ बदलें
+         ====================================================================== -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-title">Movies &amp; Upcoming</span>
+        <span class="scroll-hint">Swipe &rarr;</span>
+      </div>
+
+      <div class="h-scroll">
+        
+        <!-- Poster 1: AKELA (Upcoming) -->
+        <a href="https://www.youtube.com/@mtcinema_official" target="_blank" rel="noopener noreferrer" class="movie-card">
+          <div class="poster-wrapper">
+            <span class="status-tag upcoming">Upcoming</span>
+            <img src="poster-akela.jpg" alt="AKELA Poster" onerror="this.src='https://placehold.co/300x450/1f2433/d4af37?text=AKELA'">
+            <span class="play-badge"><i class="fa-solid fa-play"></i></span>
+          </div>
+          <div class="movie-meta">
+            <div class="movie-title">AKELA</div>
+            <div class="movie-genre">Psychological Thriller</div>
+          </div>
+        </a>
+
+        <!-- Poster 2: Shaapit Talaab Part 2 -->
+        <a href="https://www.youtube.com/@mtcinema_official" target="_blank" rel="noopener noreferrer" class="movie-card">
+          <div class="poster-wrapper">
+            <span class="status-tag">Watch Now</span>
+            <img src="poster-shapit2.jpg" alt="Shaapit Talaab 2 Poster" onerror="this.src='https://placehold.co/300x450/1f2433/9ca3af?text=SHAAPIT+TALAAB+2'">
+            <span class="play-badge"><i class="fa-solid fa-play"></i></span>
+          </div>
+          <div class="movie-meta">
+            <div class="movie-title">Shaapit Talaab 2</div>
+            <div class="movie-genre">Horror • Suspense</div>
+          </div>
+        </a>
+
+        <!-- Poster 3: Shaapit Talaab Part 1 -->
+        <a href="https://www.youtube.com/@mtcinema_official" target="_blank" rel="noopener noreferrer" class="movie-card">
+          <div class="poster-wrapper">
+            <span class="status-tag">Watch Now</span>
+            <img src="poster-shapit1.jpg" alt="Shaapit Talaab 1 Poster" onerror="this.src='https://placehold.co/300x450/1f2433/9ca3af?text=SHAAPIT+TALAAB+1'">
+            <span class="play-badge"><i class="fa-solid fa-play"></i></span>
+          </div>
+          <div class="movie-meta">
+            <div class="movie-title">Shaapit Talaab</div>
+            <div class="movie-genre">Horror • Mystery</div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+
+    <!-- ======================================================================
+         SECTION 7: BEHIND THE SCENES GALLERY
+         शूटिंग की फोटोज़ (bts-main.jpg, bts-1.jpg, bts-2.jpg) यहाँ सेट करें
+         ====================================================================== -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-title">Behind The Scenes</span>
+      </div>
+
+      <div class="bts-grid">
+        <div class="bts-item wide">
+          <img src="bts-main.jpg" alt="On Location Shoot" onerror="this.src='https://placehold.co/600x260/1f2433/6b7280?text=On+Location+Shoot'">
+          <div class="bts-caption">On Location — Outdoor Sequence</div>
+        </div>
+
+        <div class="bts-item">
+          <img src="bts-1.jpg" alt="Camera Setup" onerror="this.src='https://placehold.co/300x200/1f2433/6b7280?text=Scene+1'">
+          <div class="bts-caption">Camera Framing</div>
+        </div>
+
+        <div class="bts-item">
+          <img src="bts-2.jpg" alt="Team on Set" onerror="this.src='https://placehold.co/300x200/1f2433/6b7280?text=Team+Setup'">
+          <div class="bts-caption">MT Cinema Crew</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ======================================================================
+         SECTION 8: FOOTER
+         ====================================================================== -->
+    <footer class="footer">
+      <p>&copy; 2026 MT Cinema. All Rights Reserved.</p>
+    </footer>
+
+  </main>
+
+</body>
+</html>
