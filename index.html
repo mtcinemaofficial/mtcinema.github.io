@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Opening MT Cinema on YouTube...</title>
+  <script>
+    window.onload = function() {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      var channelUrl = "https://www.youtube.com/@mtcinema_official";
+      
+      if (/android/i.test(userAgent)) {
+        window.location.href = "intent://www.youtube.com/@mtcinema_official#Intent;package=com.google.android.youtube;scheme=https;end";
+        setTimeout(function() { window.location.href = channelUrl; }, 1500);
+      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        window.location.href = "youtube://www.youtube.com/@mtcinema_official";
+        setTimeout(function() { window.location.href = channelUrl; }, 1500);
+      } else {
+        window.location.href = channelUrl;
+      }
+    };
+  </script>
+</head>
+<body style="font-family: sans-serif; text-align: center; padding-top: 50px;">
+  <p>Redirecting to MT Cinema YouTube Channel...</p>
+  <p><a href="https://www.youtube.com/@mtcinema_official">Click here if not redirected</a></p>
+</body>
+</html>
