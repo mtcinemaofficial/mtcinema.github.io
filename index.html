@@ -13,24 +13,25 @@
 
   <style>
     /* ==========================================================================
-       1. THEME COLORS & VARIABLES
+       1. EXTRA DARK THEME + YELLOW/GOLD DESIGN ACCENTS
        ========================================================================== */
     :root {
-      --bg-body: #050608;
-      --bg-card: rgba(13, 16, 23, 0.88);
-      --bg-elevated: rgba(22, 26, 36, 0.92);
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(255, 255, 255, 0.18);
-      --border-gold: rgba(212, 175, 55, 0.35);
-      --text-primary: #f3f4f6;
+      --bg-body: #020305;
+      --bg-card: #080a0f;
+      --bg-elevated: #0f121a;
+      --border-subtle: rgba(255, 255, 255, 0.07);
+      --border-hover: rgba(250, 204, 21, 0.28);
+      --border-gold: rgba(250, 204, 21, 0.38);
+      --text-primary: #f8fafc;
       --text-secondary: #9ca3af;
       --text-muted: #6b7280;
       --accent-crimson: #dc2626;
-      --accent-gold: #d4af37;
+      --accent-yellow: #facc15;
+      --accent-gold: #eab308;
     }
 
     /* ==========================================================================
-       2. BASIC PAGE SETUP & BACKGROUND IMAGE (bg.jpg)
+       2. BASIC PAGE SETUP (NO BG PHOTO, DARK + YELLOW AMBIENT DESIGN)
        ========================================================================== */
     * {
       margin: 0;
@@ -42,6 +43,10 @@
     body {
       position: relative;
       background-color: var(--bg-body);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(250, 204, 21, 0.12) 0%, transparent 48%),
+        radial-gradient(circle at 10% 35%, rgba(234, 179, 8, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 90% 75%, rgba(250, 204, 21, 0.07) 0%, transparent 45%);
       color: var(--text-primary);
       display: flex;
       justify-content: center;
@@ -51,30 +56,27 @@
       overflow-x: hidden;
     }
 
-    /* Folder me 'bg.jpg' naam se photo daalte hi automatic low opacity me set hogi */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: url('bg.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.14;
-      z-index: -1;
-      pointer-events: none;
-    }
-
     .container {
       width: 100%;
       max-width: 460px;
       background-color: var(--bg-card);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid rgba(250, 204, 21, 0.14);
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+      box-shadow: 
+        0 25px 65px rgba(0, 0, 0, 0.95),
+        0 0 35px rgba(250, 204, 21, 0.05);
+      position: relative;
+    }
+
+    /* Top subtle yellow accent bar */
+    .container::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent 0%, var(--accent-yellow) 50%, transparent 100%);
+      opacity: 0.75;
     }
 
     /* ==========================================================================
@@ -83,7 +85,7 @@
     .brand-header {
       padding: 24px 20px 18px;
       text-align: center;
-      background: linear-gradient(180deg, rgba(220, 38, 38, 0.08) 0%, transparent 100%);
+      background: radial-gradient(ellipse at top, rgba(250, 204, 21, 0.1) 0%, transparent 72%);
     }
 
     .brand-logo {
@@ -91,14 +93,14 @@
       height: 84px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2.5px solid rgba(255, 255, 255, 0.15);
+      border: 2.5px solid rgba(250, 204, 21, 0.45);
       background-color: var(--bg-elevated);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.85), 0 0 18px rgba(250, 204, 21, 0.15);
       margin-bottom: 10px;
     }
 
     .brand-title {
-      font-size: 1.5rem;
+      font-size: 1.52rem;
       font-weight: 800;
       letter-spacing: 1.8px;
       color: #ffffff;
@@ -143,7 +145,7 @@
       display: inline-block;
       width: 3px;
       height: 13px;
-      background-color: var(--accent-crimson);
+      background-color: var(--accent-yellow);
       border-radius: 2px;
     }
 
@@ -152,16 +154,16 @@
       color: var(--text-muted);
     }
 
-    /* Slider Container (4s Auto + Manual Swipe & Arrows) */
+    /* Slider Container (7s Auto + Manual Swipe & Arrows) */
     .upcoming-slider-box {
       position: relative;
       width: 100%;
       height: 210px;
       border-radius: 14px;
       overflow: hidden;
-      border: 1px solid var(--border-subtle);
-      background-color: #0b0e14;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(250, 204, 21, 0.16);
+      background-color: #050608;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
       user-select: none;
       touch-action: pan-y;
     }
@@ -193,7 +195,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, transparent 45%, rgba(0,0,0,0.82) 100%);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.48) 0%, transparent 45%, rgba(0,0,0,0.86) 100%);
     }
 
     .poster-status-overlay {
@@ -205,12 +207,12 @@
       font-weight: 600;
       letter-spacing: 1.2px;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.78);
-      background: rgba(0, 0, 0, 0.42);
+      color: rgba(255, 255, 255, 0.8);
+      background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(4px);
       padding: 3px 8px;
       border-radius: 5px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(250, 204, 21, 0.25);
     }
 
     .slider-nav-btn {
@@ -222,9 +224,9 @@
       height: 30px;
       border-radius: 50%;
       border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0, 0, 0, 0.52);
       backdrop-filter: blur(4px);
-      color: rgba(255, 255, 255, 0.85);
+      color: rgba(255, 255, 255, 0.88);
       font-size: 0.75rem;
       display: flex;
       align-items: center;
@@ -234,9 +236,9 @@
     }
 
     .slider-nav-btn:hover {
-      background: rgba(0, 0, 0, 0.75);
-      color: #ffffff;
-      border-color: rgba(255, 255, 255, 0.35);
+      background: rgba(0, 0, 0, 0.82);
+      color: var(--accent-yellow);
+      border-color: var(--accent-yellow);
     }
 
     .slider-prev { left: 10px; }
@@ -251,7 +253,7 @@
       font-weight: 700;
       color: #ffffff;
       letter-spacing: 0.5px;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
     }
 
     .slider-dots {
@@ -275,38 +277,37 @@
     .slider-dot.active {
       width: 18px;
       border-radius: 4px;
-      background: var(--accent-gold);
+      background: var(--accent-yellow);
     }
 
     /* Status Text Box */
     .status-box {
       background-color: var(--bg-elevated);
-      border: 1px solid var(--border-subtle);
-      border-left: 3px solid var(--accent-gold);
+      border: 1px solid rgba(250, 204, 21, 0.16);
+      border-left: 3px solid var(--accent-yellow);
       border-radius: 12px;
       padding: 12px 14px;
       display: flex;
       align-items: flex-start;
       gap: 11px;
-      margin-top: 12px;
     }
 
     .status-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background-color: var(--accent-gold);
+      background-color: var(--accent-yellow);
       margin-top: 6px;
       flex-shrink: 0;
-      box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+      box-shadow: 0 0 10px rgba(250, 204, 21, 0.7);
     }
 
     .status-label {
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: var(--accent-gold);
-      font-weight: 600;
+      color: var(--accent-yellow);
+      font-weight: 700;
       margin-bottom: 2px;
     }
 
@@ -317,33 +318,30 @@
     }
 
     /* ==========================================================================
-       5. SOCIAL BUTTONS & STACK
+       5. BRANDED SOCIAL BUTTONS (YT, INSTAGRAM, FACEBOOK, WHATSAPP)
        ========================================================================== */
     .social-stack {
       display: flex;
       flex-direction: column;
-      gap: 11px;
+      gap: 12px;
     }
 
     .btn-link {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 15px;
-      border-radius: 12px;
+      padding: 13px 16px;
+      border-radius: 13px;
       text-decoration: none;
-      font-size: 0.89rem;
-      font-weight: 500;
-      color: var(--text-primary);
-      background-color: var(--bg-elevated);
-      border: 1px solid var(--border-subtle);
-      transition: all 0.2s ease;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #ffffff;
+      transition: all 0.22s ease;
     }
 
     .btn-link:hover {
-      border-color: var(--border-hover);
-      background-color: #1e2332;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      filter: brightness(1.08);
     }
 
     .btn-left {
@@ -353,36 +351,36 @@
     }
 
     .btn-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
+      font-size: 1.12rem;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
     }
 
-    /* --- YouTube Highlighted Button --- */
+    .btn-arrow {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    /* --- 1. YouTube Highlighted Button --- */
     .btn-youtube {
       padding: 16px 18px;
       border-radius: 14px;
       background: linear-gradient(135deg, #ff1e1e 0%, #c81010 100%);
       border: 1.5px solid #ff6b6b;
-      color: #ffffff;
-      box-shadow: 0 6px 24px rgba(255, 30, 30, 0.55);
+      box-shadow: 0 6px 24px rgba(255, 30, 30, 0.5);
       animation: ytBrightPulse 1.8s infinite ease-in-out;
-    }
-
-    .btn-youtube:hover {
-      background: linear-gradient(135deg, #ff3333 0%, #dc1414 100%);
-      transform: scale(1.015);
     }
 
     .btn-youtube .btn-icon {
       width: 36px;
       height: 36px;
       background: rgba(255, 255, 255, 0.22);
-      color: #ffffff;
       font-size: 1.25rem;
     }
 
@@ -402,13 +400,8 @@
 
     .yt-sub-hint {
       font-size: 0.7rem;
-      color: rgba(255, 255, 255, 0.88);
+      color: rgba(255, 255, 255, 0.9);
       font-weight: 500;
-    }
-
-    .btn-youtube .btn-arrow {
-      color: #ffffff;
-      font-size: 0.85rem;
     }
 
     @keyframes ytBrightPulse {
@@ -417,29 +410,39 @@
       100% { box-shadow: 0 0 0 0 rgba(255, 45, 45, 0); }
     }
 
-    /* --- Other Social Accents --- */
-    .ig-accent .btn-icon { background: rgba(225, 48, 108, 0.16); color: #f43f5e; }
-    .fb-accent .btn-icon { background: rgba(59, 130, 246, 0.16); color: #60a5fa; }
-    .wa-accent .btn-icon { background: rgba(34, 197, 94, 0.16); color: #4ade80; }
-    .gm-accent .btn-icon { background: rgba(234, 67, 53, 0.16); color: #f87171; }
+    /* --- 2. Instagram Signature Gradient Button --- */
+    .btn-instagram {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 6px 20px rgba(220, 39, 67, 0.32);
+    }
 
-    .btn-arrow {
-      font-size: 0.76rem;
-      color: var(--text-muted);
+    /* --- 3. Facebook Official Blue Button --- */
+    .btn-facebook {
+      background: linear-gradient(135deg, #1877F2 0%, #0d5bc6 100%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 6px 20px rgba(24, 119, 242, 0.3);
+    }
+
+    /* --- 4. WhatsApp Signature Green Button --- */
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.28);
     }
 
     /* ==========================================================================
-       6. DIRECTOR & TEAM CARDS
+       6. DIRECTOR & TEAM CARDS (WITH SUBTLE YELLOW ACCENT)
        ========================================================================== */
     .director-card {
       display: flex;
       align-items: center;
       gap: 15px;
-      background: linear-gradient(145deg, rgba(28, 33, 48, 0.95) 0%, rgba(18, 22, 33, 0.95) 100%);
+      background: linear-gradient(145deg, #131620 0%, #0a0c12 100%);
       border: 1px solid var(--border-gold);
       border-radius: 14px;
       padding: 14px 16px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
     }
 
     .director-photo {
@@ -447,8 +450,8 @@
       height: 64px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--accent-gold);
-      background-color: #232838;
+      border: 2px solid var(--accent-yellow);
+      background-color: #1a1e2b;
       flex-shrink: 0;
     }
 
@@ -463,8 +466,8 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: var(--accent-gold);
-      background: rgba(212, 175, 55, 0.14);
+      color: var(--accent-yellow);
+      background: rgba(250, 204, 21, 0.14);
       padding: 2px 8px;
       border-radius: 4px;
       margin-bottom: 4px;
@@ -488,20 +491,20 @@
       font-weight: 500;
       text-decoration: none;
       color: var(--text-primary);
-      background-color: rgba(255, 255, 255, 0.06);
+      background-color: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.12);
       transition: all 0.2s ease;
     }
 
     .profile-pill:hover {
-      background-color: rgba(255, 255, 255, 0.14);
-      border-color: rgba(255, 255, 255, 0.26);
+      background-color: rgba(250, 204, 21, 0.12);
+      border-color: rgba(250, 204, 21, 0.35);
       color: #ffffff;
     }
 
     .profile-pill i {
       font-size: 0.82rem;
-      color: #e1306c;
+      color: #f43f5e;
     }
 
     .team-list {
@@ -530,8 +533,8 @@
       height: 52px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1.5px solid var(--border-hover);
-      background-color: #232838;
+      border: 1.5px solid rgba(255, 255, 255, 0.15);
+      background-color: #1a1e2b;
       flex-shrink: 0;
     }
 
@@ -565,7 +568,7 @@
     }
 
     .h-scroll::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.14);
+      background: rgba(250, 204, 21, 0.25);
       border-radius: 10px;
     }
 
@@ -590,7 +593,7 @@
       position: relative;
       width: 100%;
       aspect-ratio: 2 / 3;
-      background-color: #1f2433;
+      background-color: #131722;
     }
 
     .poster-wrapper img {
@@ -609,14 +612,14 @@
       font-weight: 600;
       letter-spacing: 0.6px;
       text-transform: uppercase;
-      background: rgba(11, 14, 20, 0.85);
+      background: rgba(5, 6, 8, 0.88);
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: #f3f4f6;
     }
 
     .status-tag.upcoming {
-      border-color: rgba(212, 175, 55, 0.5);
-      color: var(--accent-gold);
+      border-color: rgba(250, 204, 21, 0.55);
+      color: var(--accent-yellow);
     }
 
     .play-badge {
@@ -626,12 +629,12 @@
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background: rgba(15, 18, 25, 0.88);
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(5, 6, 8, 0.9);
+      border: 1px solid rgba(250, 204, 21, 0.35);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
+      color: var(--accent-yellow);
       font-size: 0.72rem;
     }
 
@@ -655,7 +658,7 @@
     }
 
     /* ==========================================================================
-       8. BEHIND THE SCENES GALLERY
+       8. BEHIND THE SCENES PHOTO GALLERY
        ========================================================================== */
     .bts-grid {
       display: grid;
@@ -688,7 +691,7 @@
       bottom: 0;
       inset-inline: 0;
       padding: 14px 10px 6px;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
       font-size: 0.72rem;
       color: #e5e7eb;
     }
@@ -700,7 +703,7 @@
       padding: 18px 20px;
       text-align: center;
       border-top: 1px solid var(--border-subtle);
-      background-color: rgba(0, 0, 0, 0.35);
+      background-color: rgba(0, 0, 0, 0.55);
     }
 
     .footer p {
@@ -709,7 +712,7 @@
     }
   </style>
 
-  <!-- JavaScript: Direct YouTube App Open with Subscribe Confirmation + 4s Auto/Manual Slider -->
+  <!-- JavaScript: Direct YouTube App Open with Subscribe Confirmation + 7s Auto/Manual Slider -->
   <script>
     function openYouTubeSubscribe(event, fallbackUrl) {
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -754,7 +757,7 @@
         if (slides.length > 1) {
           autoSlideTimer = setInterval(function() {
             showSlide(currentIndex + 1);
-          }, 4000); // Har 4 second me slide hoga
+          }, 7000); // Har 7 second me slide hoga
         }
       }
 
@@ -814,14 +817,14 @@
          1. TOP: LOGO -> NAME -> TAGLINE TEXT
          ====================================================================== -->
     <header class="brand-header">
-      <img src="logo.jpg" alt="MT Cinema Logo" class="brand-logo" onerror="this.src='https://placehold.co/150x150/171b26/ffffff?text=MT'">
+      <img src="logo.jpg" alt="MT Cinema Logo" class="brand-logo" onerror="this.src='https://placehold.co/150x150/0f121a/facc15?text=MT'">
       <h1 class="brand-title">MT CINEMA</h1>
       <p class="brand-tagline">Independent Short Films, Suspense Thrillers &amp; Clean Family Entertainment.</p>
     </header>
 
 
     <!-- ======================================================================
-         2. NEXT: POSTERS SLIDER BOX (4s Auto + Manual Swipe/Arrows)
+         2. NEXT: POSTERS SLIDER BOX (7s Auto + Manual Swipe/Arrows)
          ====================================================================== -->
     <section class="section">
       <div class="upcoming-slider-box" id="upcomingSlider">
@@ -836,19 +839,19 @@
 
         <!-- Slide 1 -->
         <div class="slide-item active">
-          <img src="poster-akela.jpg" alt="AKELA Upcoming Movie" onerror="this.src='https://placehold.co/600x320/151924/d4af37?text=AKELA+-+COMING+SOON'">
+          <img src="poster-akela.jpg" alt="AKELA Upcoming Movie" onerror="this.src='https://placehold.co/600x320/080a0f/facc15?text=AKELA+-+COMING+SOON'">
           <div class="slide-caption">AKELA — Psychological Thriller</div>
         </div>
 
         <!-- Slide 2 -->
         <div class="slide-item">
-          <img src="bts-1.jpg" alt="Upcoming Short Film" onerror="this.src='https://placehold.co/600x320/151924/ffffff?text=UPCOMING+SHORT+FILM'">
+          <img src="bts-1.jpg" alt="Upcoming Short Film" onerror="this.src='https://placehold.co/600x320/080a0f/ffffff?text=UPCOMING+SHORT+FILM'">
           <div class="slide-caption">Upcoming Short Film</div>
         </div>
 
         <!-- Slide 3 -->
         <div class="slide-item">
-          <img src="bts-2.jpg" alt="Totka Upcoming Short Film" onerror="this.src='https://placehold.co/600x320/151924/dc2626?text=TOTKA+-+UPCOMING'">
+          <img src="bts-2.jpg" alt="Totka Upcoming Short Film" onerror="this.src='https://placehold.co/600x320/080a0f/dc2626?text=TOTKA+-+UPCOMING'">
           <div class="slide-caption">TOTKA — Upcoming Suspense</div>
         </div>
 
@@ -895,7 +898,7 @@
 
 
     <!-- ======================================================================
-         5. NEXT: ALL OTHER SOCIAL MEDIA & CONTACT BUTTONS (Insta, FB, WA, Gmail)
+         5. NEXT: BRANDED SOCIAL MEDIA BUTTONS (Instagram, Facebook, WhatsApp)
          ====================================================================== -->
     <section class="section">
       <div class="section-header">
@@ -903,8 +906,8 @@
       </div>
 
       <div class="social-stack">
-        <!-- Instagram Button -->
-        <a href="https://www.instagram.com/mtcinema_official" target="_blank" rel="noopener noreferrer" class="btn-link ig-accent">
+        <!-- Instagram Button (Authentic Instagram Gradient) -->
+        <a href="https://www.instagram.com/mtcinema_official" target="_blank" rel="noopener noreferrer" class="btn-link btn-instagram">
           <div class="btn-left">
             <span class="btn-icon"><i class="fa-brands fa-instagram"></i></span>
             <span>Follow on Instagram</span>
@@ -912,8 +915,8 @@
           <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
         </a>
 
-        <!-- Facebook Button -->
-        <a href="https://www.facebook.com/share/1AF4wNtTpa/" target="_blank" rel="noopener noreferrer" class="btn-link fb-accent">
+        <!-- Facebook Button (Official Facebook Blue) -->
+        <a href="https://www.facebook.com/share/1AF4wNtTpa/" target="_blank" rel="noopener noreferrer" class="btn-link btn-facebook">
           <div class="btn-left">
             <span class="btn-icon"><i class="fa-brands fa-facebook-f"></i></span>
             <span>Follow on Facebook</span>
@@ -921,20 +924,11 @@
           <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
         </a>
 
-        <!-- WhatsApp Button -->
-        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" class="btn-link wa-accent">
+        <!-- WhatsApp Button (Official WhatsApp Green) -->
+        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" class="btn-link btn-whatsapp">
           <div class="btn-left">
             <span class="btn-icon"><i class="fa-brands fa-whatsapp"></i></span>
             <span>Connect on WhatsApp</span>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
-        </a>
-
-        <!-- Gmail Button -->
-        <a href="mailto:mtcinemaofficial@gmail.com" class="btn-link gm-accent">
-          <div class="btn-left">
-            <span class="btn-icon"><i class="fa-solid fa-envelope"></i></span>
-            <span>Contact via Gmail</span>
           </div>
           <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
         </a>
@@ -951,7 +945,7 @@
       </div>
 
       <div class="director-card">
-        <img src="moheed.jpg" alt="Mohd Moheed" class="director-photo" onerror="this.src='https://placehold.co/130x130/232838/d4af37?text=MM'">
+        <img src="moheed.jpg" alt="Mohd Moheed" class="director-photo" onerror="this.src='https://placehold.co/130x130/131620/facc15?text=MM'">
         <div class="person-details">
           <span class="director-badge">Director &amp; Writer</span>
           <div class="director-name">Mohd Moheed</div>
@@ -975,7 +969,7 @@
       <div class="team-list">
         <!-- Member 1 -->
         <div class="member-row">
-          <img src="team-arif.jpg" alt="Mohd Arif" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=MA'">
+          <img src="team-arif.jpg" alt="Mohd Arif" class="member-photo" onerror="this.src='https://placehold.co/110x110/131620/9ca3af?text=MA'">
           <div class="person-details">
             <div class="member-name">Mohd Arif <span class="member-role">• Cinematography</span></div>
             <a href="https://www.instagram.com/_arif__official_2.0?rpxt=ZmFqOTVjMnEycHh3" target="_blank" rel="noopener noreferrer" class="profile-pill">
@@ -987,7 +981,7 @@
 
         <!-- Member 2 -->
         <div class="member-row">
-          <img src="team-junaid.jpg" alt="Junaid Ansari" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=JA'">
+          <img src="team-junaid.jpg" alt="Junaid Ansari" class="member-photo" onerror="this.src='https://placehold.co/110x110/131620/9ca3af?text=JA'">
           <div class="person-details">
             <div class="member-name">Junaid Ansari <span class="member-role">• Lead Actor</span></div>
             <a href="https://www.instagram.com/mohammad_zuneid_khan?exln=aHV3eHYyMjg0cHd3" target="_blank" rel="noopener noreferrer" class="profile-pill">
@@ -999,7 +993,7 @@
 
         <!-- Member 3 -->
         <div class="member-row">
-          <img src="team-sonu.jpg" alt="Sonu" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=SO'">
+          <img src="team-sonu.jpg" alt="Sonu" class="member-photo" onerror="this.src='https://placehold.co/110x110/131620/9ca3af?text=SO'">
           <div class="person-details">
             <div class="member-name">Sonu <span class="member-role">• Actor</span></div>
             <a href="https://www.instagram.com/john__wick_2?dlrf=MWQzeWUxbjhzZmNhbA==" target="_blank" rel="noopener noreferrer" class="profile-pill">
@@ -1011,7 +1005,7 @@
 
         <!-- Member 4 -->
         <div class="member-row">
-          <img src="team-ismail.jpg" alt="Mohd Ismail" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=MI'">
+          <img src="team-ismail.jpg" alt="Mohd Ismail" class="member-photo" onerror="this.src='https://placehold.co/110x110/131620/9ca3af?text=MI'">
           <div class="person-details">
             <div class="member-name">Mohd Ismail <span class="member-role">• Production</span></div>
             <a href="https://www.instagram.com/rohan2384khan?obrf=MTBpYnZ2aGNkbnE4Zg==" target="_blank" rel="noopener noreferrer" class="profile-pill">
@@ -1023,7 +1017,7 @@
 
         <!-- Member 5 -->
         <div class="member-row">
-          <img src="team-tiger.jpg" alt="Tiger" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=TG'">
+          <img src="team-tiger.jpg" alt="Tiger" class="member-photo" onerror="this.src='https://placehold.co/110x110/131620/9ca3af?text=TG'">
           <div class="person-details">
             <div class="member-name">Tiger <span class="member-role">• Cast</span></div>
             <a href="https://www.instagram.com/mohdnasir.mn738?dlrf=bTB2M2l6bmM4Nmpq" target="_blank" rel="noopener noreferrer" class="profile-pill">
@@ -1035,7 +1029,7 @@
 
         <!-- Member 6 -->
         <div class="member-row">
-          <img src="team-taslim.jpg" alt="Mohd Taslim" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=MT'">
+          <img src="team-taslim.jpg" alt="Mohd Taslim" class="member-photo" onerror="this.src='https://placehold.co/110x110/131620/9ca3af?text=MT'">
           <div class="person-details">
             <div class="member-name">Mohd Taslim <span class="member-role">• Actor</span></div>
             <a href="https://www.instagram.com/taslim_xii?dlrf=OHJtMDU0NzI0d3lz" target="_blank" rel="noopener noreferrer" class="profile-pill">
@@ -1061,7 +1055,7 @@
         <a href="https://www.youtube.com/@mtcinema_official" target="_blank" rel="noopener noreferrer" class="movie-card">
           <div class="poster-wrapper">
             <span class="status-tag upcoming">Upcoming</span>
-            <img src="poster-akela.jpg" alt="AKELA Poster" onerror="this.src='https://placehold.co/300x450/1f2433/d4af37?text=AKELA'">
+            <img src="poster-akela.jpg" alt="AKELA Poster" onerror="this.src='https://placehold.co/300x450/131722/facc15?text=AKELA'">
             <span class="play-badge"><i class="fa-solid fa-play"></i></span>
           </div>
           <div class="movie-meta">
@@ -1073,7 +1067,7 @@
         <a href="https://youtu.be/oARfVRqet40?si=2ZkrjHjh1FVMsXS4" target="_blank" rel="noopener noreferrer" class="movie-card">
           <div class="poster-wrapper">
             <span class="status-tag">Watch Now</span>
-            <img src="poster-shapit2.jpg" alt="Shaapit Talaab 2 Poster" onerror="this.src='https://placehold.co/300x450/1f2433/9ca3af?text=SHAAPIT+TALAAB+2'">
+            <img src="poster-shapit2.jpg" alt="Shaapit Talaab 2 Poster" onerror="this.src='https://placehold.co/300x450/131722/9ca3af?text=SHAAPIT+TALAAB+2'">
             <span class="play-badge"><i class="fa-solid fa-play"></i></span>
           </div>
           <div class="movie-meta">
@@ -1085,7 +1079,7 @@
         <a href="https://youtu.be/DfxP0z2B020?si=X1Fj5kemHQKIY-lz" target="_blank" rel="noopener noreferrer" class="movie-card">
           <div class="poster-wrapper">
             <span class="status-tag">Watch Now</span>
-            <img src="poster-shapit1.jpg" alt="Shaapit Talaab 1 Poster" onerror="this.src='https://placehold.co/300x450/1f2433/9ca3af?text=SHAAPIT+TALAAB+1'">
+            <img src="poster-shapit1.jpg" alt="Shaapit Talaab 1 Poster" onerror="this.src='https://placehold.co/300x450/131722/9ca3af?text=SHAAPIT+TALAAB+1'">
             <span class="play-badge"><i class="fa-solid fa-play"></i></span>
           </div>
           <div class="movie-meta">
@@ -1107,17 +1101,17 @@
 
       <div class="bts-grid">
         <div class="bts-item wide">
-          <img src="bts-main.jpg" alt="On Location Shoot" onerror="this.src='https://placehold.co/600x260/1f2433/6b7280?text=On+Location+Shoot'">
+          <img src="bts-main.jpg" alt="On Location Shoot" onerror="this.src='https://placehold.co/600x260/131722/6b7280?text=On+Location+Shoot'">
           <div class="bts-caption">On Location — Outdoor Sequence</div>
         </div>
 
         <div class="bts-item">
-          <img src="bts-1.jpg" alt="Camera Setup" onerror="this.src='https://placehold.co/300x200/1f2433/6b7280?text=Scene+1'">
+          <img src="bts-1.jpg" alt="Camera Setup" onerror="this.src='https://placehold.co/300x200/131722/6b7280?text=Scene+1'">
           <div class="bts-caption">Camera Framing</div>
         </div>
 
         <div class="bts-item">
-          <img src="bts-2.jpg" alt="Team on Set" onerror="this.src='https://placehold.co/300x200/1f2433/6b7280?text=Team+Setup'">
+          <img src="bts-2.jpg" alt="Team on Set" onerror="this.src='https://placehold.co/300x200/131722/6b7280?text=Team+Setup'">
           <div class="bts-caption">MT Cinema Crew</div>
         </div>
       </div>
