@@ -78,10 +78,10 @@
     }
 
     /* ==========================================================================
-       3. TOP BRAND HEADER (NO EMPTY SPACE ON TOP)
+       3. TOP BRAND HEADER (Logo -> Name -> Tagline)
        ========================================================================== */
     .brand-header {
-      padding: 22px 20px 18px;
+      padding: 24px 20px 18px;
       text-align: center;
       background: linear-gradient(180deg, rgba(220, 38, 38, 0.08) 0%, transparent 100%);
     }
@@ -113,7 +113,7 @@
     }
 
     /* ==========================================================================
-       4. AUTO-SLIDING UPCOMING POSTER BOX & LATEST PRODUCTION STATUS
+       4. SECTIONS & STYLING
        ========================================================================== */
     .section {
       padding: 16px 18px;
@@ -152,7 +152,7 @@
       color: var(--text-muted);
     }
 
-    /* Auto Slider Container */
+    /* Slider Container (4s Auto + Manual Swipe & Arrows) */
     .upcoming-slider-box {
       position: relative;
       width: 100%;
@@ -161,8 +161,9 @@
       overflow: hidden;
       border: 1px solid var(--border-subtle);
       background-color: #0b0e14;
-      margin-bottom: 12px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      user-select: none;
+      touch-action: pan-y;
     }
 
     .slide-item {
@@ -171,11 +172,13 @@
       width: 100%;
       height: 100%;
       opacity: 0;
-      transition: opacity 0.6s ease-in-out;
+      transition: opacity 0.55s ease-in-out;
+      pointer-events: none;
     }
 
     .slide-item.active {
       opacity: 1;
+      pointer-events: auto;
     }
 
     .slide-item img {
@@ -183,16 +186,16 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
+      pointer-events: none;
     }
 
     .slide-item::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, transparent 45%, rgba(0,0,0,0.8) 100%);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, transparent 45%, rgba(0,0,0,0.82) 100%);
     }
 
-    /* Halke opacity me chhote letters me overlay label */
     .poster-status-overlay {
       position: absolute;
       top: 10px;
@@ -210,6 +213,35 @@
       border: 1px solid rgba(255, 255, 255, 0.14);
     }
 
+    .slider-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 4;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(4px);
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .slider-nav-btn:hover {
+      background: rgba(0, 0, 0, 0.75);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .slider-prev { left: 10px; }
+    .slider-next { right: 10px; }
+
     .slide-caption {
       position: absolute;
       bottom: 10px;
@@ -226,26 +258,27 @@
       position: absolute;
       bottom: 12px;
       right: 12px;
-      z-index: 3;
+      z-index: 4;
       display: flex;
-      gap: 5px;
+      gap: 6px;
     }
 
     .slider-dot {
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.38);
+      cursor: pointer;
       transition: all 0.3s ease;
     }
 
     .slider-dot.active {
-      width: 16px;
+      width: 18px;
       border-radius: 4px;
       background: var(--accent-gold);
     }
 
-    /* Status Text Box below Slider */
+    /* Status Text Box */
     .status-box {
       background-color: var(--bg-elevated);
       border: 1px solid var(--border-subtle);
@@ -255,6 +288,7 @@
       display: flex;
       align-items: flex-start;
       gap: 11px;
+      margin-top: 12px;
     }
 
     .status-dot {
@@ -283,7 +317,7 @@
     }
 
     /* ==========================================================================
-       5. SOCIAL BUTTONS (YOUTUBE HIGHLIGHTED + IG + FB + WA + GMAIL)
+       5. SOCIAL BUTTONS & STACK
        ========================================================================== */
     .social-stack {
       display: flex;
@@ -328,7 +362,7 @@
       font-size: 1rem;
     }
 
-    /* --- Special Bright, Slightly Bigger & Animated YouTube Button --- */
+    /* --- YouTube Highlighted Button --- */
     .btn-youtube {
       padding: 16px 18px;
       border-radius: 14px;
@@ -337,7 +371,6 @@
       color: #ffffff;
       box-shadow: 0 6px 24px rgba(255, 30, 30, 0.55);
       animation: ytBrightPulse 1.8s infinite ease-in-out;
-      margin-bottom: 3px;
     }
 
     .btn-youtube:hover {
@@ -379,18 +412,12 @@
     }
 
     @keyframes ytBrightPulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(255, 45, 45, 0.75);
-      }
-      70% {
-        box-shadow: 0 0 0 11px rgba(255, 45, 45, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(255, 45, 45, 0);
-      }
+      0% { box-shadow: 0 0 0 0 rgba(255, 45, 45, 0.75); }
+      70% { box-shadow: 0 0 0 11px rgba(255, 45, 45, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 45, 45, 0); }
     }
 
-    /* --- Social Icons Accents --- */
+    /* --- Other Social Accents --- */
     .ig-accent .btn-icon { background: rgba(225, 48, 108, 0.16); color: #f43f5e; }
     .fb-accent .btn-icon { background: rgba(59, 130, 246, 0.16); color: #60a5fa; }
     .wa-accent .btn-icon { background: rgba(34, 197, 94, 0.16); color: #4ade80; }
@@ -402,7 +429,7 @@
     }
 
     /* ==========================================================================
-       6. DIRECTOR & WRITER + TEAM MEMBER CARDS
+       6. DIRECTOR & TEAM CARDS
        ========================================================================== */
     .director-card {
       display: flex;
@@ -628,7 +655,7 @@
     }
 
     /* ==========================================================================
-       8. BEHIND THE SCENES PHOTO GALLERY
+       8. BEHIND THE SCENES GALLERY
        ========================================================================== */
     .bts-grid {
       display: grid;
@@ -682,7 +709,7 @@
     }
   </style>
 
-  <!-- JavaScript: Direct YouTube App Open with Subscribe Confirmation + Auto Poster Slider -->
+  <!-- JavaScript: Direct YouTube App Open with Subscribe Confirmation + 4s Auto/Manual Slider -->
   <script>
     function openYouTubeSubscribe(event, fallbackUrl) {
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -704,21 +731,78 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+      const sliderBox = document.getElementById('upcomingSlider');
       const slides = document.querySelectorAll('.slide-item');
       const dots = document.querySelectorAll('.slider-dot');
+      const prevBtn = document.getElementById('sliderPrev');
+      const nextBtn = document.getElementById('sliderNext');
       let currentIndex = 0;
+      let autoSlideTimer;
 
-      if (slides.length > 1) {
-        setInterval(function() {
-          slides[currentIndex].classList.remove('active');
-          if (dots[currentIndex]) dots[currentIndex].classList.remove('active');
+      function showSlide(index) {
+        slides[currentIndex].classList.remove('active');
+        if (dots[currentIndex]) dots[currentIndex].classList.remove('active');
 
-          currentIndex = (currentIndex + 1) % slides.length;
+        currentIndex = (index + slides.length) % slides.length;
 
-          slides[currentIndex].classList.add('active');
-          if (dots[currentIndex]) dots[currentIndex].classList.add('active');
-        }, 2000); // Har 2 second me slide hoga
+        slides[currentIndex].classList.add('active');
+        if (dots[currentIndex]) dots[currentIndex].classList.add('active');
       }
+
+      function startAutoSlide() {
+        clearInterval(autoSlideTimer);
+        if (slides.length > 1) {
+          autoSlideTimer = setInterval(function() {
+            showSlide(currentIndex + 1);
+          }, 4000); // Har 4 second me slide hoga
+        }
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+          showSlide(currentIndex - 1);
+          startAutoSlide();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+          showSlide(currentIndex + 1);
+          startAutoSlide();
+        });
+      }
+
+      dots.forEach(function(dot, idx) {
+        dot.addEventListener('click', function() {
+          showSlide(idx);
+          startAutoSlide();
+        });
+      });
+
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      if (sliderBox) {
+        sliderBox.addEventListener('touchstart', function(e) {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        sliderBox.addEventListener('touchend', function(e) {
+          touchEndX = e.changedTouches[0].screenX;
+          const swipeDistance = touchEndX - touchStartX;
+
+          if (Math.abs(swipeDistance) > 40) {
+            if (swipeDistance < 0) {
+              showSlide(currentIndex + 1);
+            } else {
+              showSlide(currentIndex - 1);
+            }
+            startAutoSlide();
+          }
+        }, { passive: true });
+      }
+
+      startAutoSlide();
     });
   </script>
 </head>
@@ -727,7 +811,7 @@
   <main class="container">
     
     <!-- ======================================================================
-         SECTION 1: TOP CHANNEL LOGO & NAME (NO EMPTY BANNER SPACE)
+         1. TOP: LOGO -> NAME -> TAGLINE TEXT
          ====================================================================== -->
     <header class="brand-header">
       <img src="logo.jpg" alt="MT Cinema Logo" class="brand-logo" onerror="this.src='https://placehold.co/150x150/171b26/ffffff?text=MT'">
@@ -737,26 +821,32 @@
 
 
     <!-- ======================================================================
-         SECTION 2: AUTO-SLIDING UPCOMING POSTERS + LATEST PRODUCTION STATUS
+         2. NEXT: POSTERS SLIDER BOX (4s Auto + Manual Swipe/Arrows)
          ====================================================================== -->
     <section class="section">
-      <!-- Auto Sliding Poster Box (Har 2 second me change hoga) -->
-      <div class="upcoming-slider-box">
+      <div class="upcoming-slider-box" id="upcomingSlider">
         <span class="poster-status-overlay">Latest Production Status</span>
 
-        <!-- Slide 1: AKELA -->
+        <button type="button" class="slider-nav-btn slider-prev" id="sliderPrev" aria-label="Previous Poster">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button type="button" class="slider-nav-btn slider-next" id="sliderNext" aria-label="Next Poster">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <!-- Slide 1 -->
         <div class="slide-item active">
           <img src="poster-akela.jpg" alt="AKELA Upcoming Movie" onerror="this.src='https://placehold.co/600x320/151924/d4af37?text=AKELA+-+COMING+SOON'">
           <div class="slide-caption">AKELA — Psychological Thriller</div>
         </div>
 
-        <!-- Slide 2: Upcoming Short Film 2 (Lakkha / bts-1.jpg) -->
+        <!-- Slide 2 -->
         <div class="slide-item">
           <img src="bts-1.jpg" alt="Upcoming Short Film" onerror="this.src='https://placehold.co/600x320/151924/ffffff?text=UPCOMING+SHORT+FILM'">
           <div class="slide-caption">Upcoming Short Film</div>
         </div>
 
-        <!-- Slide 3: Upcoming Short Film 3 (Totka / bts-2.jpg) -->
+        <!-- Slide 3 -->
         <div class="slide-item">
           <img src="bts-2.jpg" alt="Totka Upcoming Short Film" onerror="this.src='https://placehold.co/600x320/151924/dc2626?text=TOTKA+-+UPCOMING'">
           <div class="slide-caption">TOTKA — Upcoming Suspense</div>
@@ -768,8 +858,32 @@
           <span class="slider-dot"></span>
         </div>
       </div>
+    </section>
 
-      <!-- Status Text Box (Same as before) -->
+
+    <!-- ======================================================================
+         3. NEXT: YOUTUBE BUTTON
+         ====================================================================== -->
+    <section class="section">
+      <div class="social-stack">
+        <a href="https://www.youtube.com/@mtcinema_official?sub_confirmation=1" target="_blank" rel="noopener noreferrer" onclick="openYouTubeSubscribe(event, this.href)" class="btn-link btn-youtube">
+          <div class="btn-left">
+            <span class="btn-icon"><i class="fa-brands fa-youtube"></i></span>
+            <div class="yt-text-group">
+              <span class="yt-glow-text">Subscribe on YouTube</span>
+              <span class="yt-sub-hint">Watch Short Films &amp; Trailers</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- ======================================================================
+         4. NEXT: LATEST PRODUCTION STATUS TEXT LINE
+         ====================================================================== -->
+    <section class="section" style="border-top: none; padding-top: 0;">
       <div class="status-box">
         <span class="status-dot"></span>
         <div>
@@ -781,7 +895,7 @@
 
 
     <!-- ======================================================================
-         SECTION 3: OFFICIAL SOCIAL LINKS (YT -> IG -> FB -> WA -> GMAIL)
+         5. NEXT: ALL OTHER SOCIAL MEDIA & CONTACT BUTTONS (Insta, FB, WA, Gmail)
          ====================================================================== -->
     <section class="section">
       <div class="section-header">
@@ -789,19 +903,7 @@
       </div>
 
       <div class="social-stack">
-        <!-- 1. YouTube Button (Bright, Bigger, Animated + Direct App & Subscribe) -->
-        <a href="https://www.youtube.com/@mtcinema_official?sub_confirmation=1" target="_blank" rel="noopener noreferrer" onclick="openYouTubeSubscribe(event, this.href)" class="btn-link btn-youtube">
-          <div class="btn-left">
-            <span class="btn-icon"><i class="fa-brands fa-youtube"></i></span>
-            <div class="yt-text-group">
-              <span class="yt-glow-text">Subscribe on YouTube</span>
-              <span class="yt-sub-hint">Watch Short Films &amp; Trailers</span>
-            </div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
-        </a>
-
-        <!-- 2. Instagram Button -->
+        <!-- Instagram Button -->
         <a href="https://www.instagram.com/mtcinema_official" target="_blank" rel="noopener noreferrer" class="btn-link ig-accent">
           <div class="btn-left">
             <span class="btn-icon"><i class="fa-brands fa-instagram"></i></span>
@@ -810,7 +912,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
         </a>
 
-        <!-- 3. Facebook Button -->
+        <!-- Facebook Button -->
         <a href="https://www.facebook.com/share/1AF4wNtTpa/" target="_blank" rel="noopener noreferrer" class="btn-link fb-accent">
           <div class="btn-left">
             <span class="btn-icon"><i class="fa-brands fa-facebook-f"></i></span>
@@ -819,7 +921,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
         </a>
 
-        <!-- 4. WhatsApp Button -->
+        <!-- WhatsApp Button -->
         <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" class="btn-link wa-accent">
           <div class="btn-left">
             <span class="btn-icon"><i class="fa-brands fa-whatsapp"></i></span>
@@ -828,7 +930,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
         </a>
 
-        <!-- 5. Gmail Button -->
+        <!-- Gmail Button -->
         <a href="mailto:mtcinemaofficial@gmail.com" class="btn-link gm-accent">
           <div class="btn-left">
             <span class="btn-icon"><i class="fa-solid fa-envelope"></i></span>
@@ -841,7 +943,7 @@
 
 
     <!-- ======================================================================
-         SECTION 4: DIRECTOR & WRITER (MOHD MOHEED)
+         6. DIRECTOR & WRITER
          ====================================================================== -->
     <section class="section">
       <div class="section-header">
@@ -863,7 +965,7 @@
 
 
     <!-- ======================================================================
-         SECTION 5: TEAM MEMBERS & CAST
+         7. TEAM MEMBERS & CAST
          ====================================================================== -->
     <section class="section">
       <div class="section-header">
@@ -871,8 +973,7 @@
       </div>
 
       <div class="team-list">
-        
-        <!-- Member 1: Mohd Arif -->
+        <!-- Member 1 -->
         <div class="member-row">
           <img src="team-arif.jpg" alt="Mohd Arif" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=MA'">
           <div class="person-details">
@@ -884,7 +985,7 @@
           </div>
         </div>
 
-        <!-- Member 2: Junaid Ansari -->
+        <!-- Member 2 -->
         <div class="member-row">
           <img src="team-junaid.jpg" alt="Junaid Ansari" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=JA'">
           <div class="person-details">
@@ -896,7 +997,7 @@
           </div>
         </div>
 
-        <!-- Member 3: Sonu -->
+        <!-- Member 3 -->
         <div class="member-row">
           <img src="team-sonu.jpg" alt="Sonu" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=SO'">
           <div class="person-details">
@@ -908,7 +1009,7 @@
           </div>
         </div>
 
-        <!-- Member 4: Mohd Ismail -->
+        <!-- Member 4 -->
         <div class="member-row">
           <img src="team-ismail.jpg" alt="Mohd Ismail" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=MI'">
           <div class="person-details">
@@ -920,7 +1021,7 @@
           </div>
         </div>
 
-        <!-- Member 5: Tiger -->
+        <!-- Member 5 -->
         <div class="member-row">
           <img src="team-tiger.jpg" alt="Tiger" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=TG'">
           <div class="person-details">
@@ -932,7 +1033,7 @@
           </div>
         </div>
 
-        <!-- Member 6: Mohd Taslim -->
+        <!-- Member 6 -->
         <div class="member-row">
           <img src="team-taslim.jpg" alt="Mohd Taslim" class="member-photo" onerror="this.src='https://placehold.co/110x110/232838/9ca3af?text=MT'">
           <div class="person-details">
@@ -943,13 +1044,12 @@
             </a>
           </div>
         </div>
-
       </div>
     </section>
 
 
     <!-- ======================================================================
-         SECTION 6: MOVIES & UPCOMING POSTERS
+         8. MOVIES & UPCOMING POSTERS
          ====================================================================== -->
     <section class="section">
       <div class="section-header">
@@ -958,8 +1058,6 @@
       </div>
 
       <div class="h-scroll">
-        
-        <!-- Poster 1: AKELA (Upcoming) -->
         <a href="https://www.youtube.com/@mtcinema_official" target="_blank" rel="noopener noreferrer" class="movie-card">
           <div class="poster-wrapper">
             <span class="status-tag upcoming">Upcoming</span>
@@ -972,7 +1070,6 @@
           </div>
         </a>
 
-        <!-- Poster 2: Shaapit Talaab Part 2 -->
         <a href="https://youtu.be/oARfVRqet40?si=2ZkrjHjh1FVMsXS4" target="_blank" rel="noopener noreferrer" class="movie-card">
           <div class="poster-wrapper">
             <span class="status-tag">Watch Now</span>
@@ -985,7 +1082,6 @@
           </div>
         </a>
 
-        <!-- Poster 3: Shaapit Talaab Part 1 -->
         <a href="https://youtu.be/DfxP0z2B020?si=X1Fj5kemHQKIY-lz" target="_blank" rel="noopener noreferrer" class="movie-card">
           <div class="poster-wrapper">
             <span class="status-tag">Watch Now</span>
@@ -997,13 +1093,12 @@
             <div class="movie-genre">Horror • Mystery</div>
           </div>
         </a>
-
       </div>
     </section>
 
 
     <!-- ======================================================================
-         SECTION 7: BEHIND THE SCENES GALLERY
+         9. BEHIND THE SCENES GALLERY
          ====================================================================== -->
     <section class="section">
       <div class="section-header">
@@ -1030,7 +1125,7 @@
 
 
     <!-- ======================================================================
-         SECTION 8: FOOTER
+         10. FOOTER
          ====================================================================== -->
     <footer class="footer">
       <p>&copy; 2026 MT Cinema. All Rights Reserved.</p>
